@@ -117,7 +117,7 @@ const Hero = () => {
           </button>
         </div>
 
-          <div className="absolute -bottom-64 lg:-bottom-46 w-full bg-white p-5 lg:p-6 rounded-2xl grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+          <div className="absolute shadow-md -bottom-46 w-full bg-white p-5 lg:p-6 rounded-2xl grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
             {stats.map((item) => (
               <div key={item.id} className="flex items-center space-x-3">
                 <div className="bg-[#BDD7B699] min-w-[40px] w-[40px] h-[40px] flex items-center justify-center rounded-full">
