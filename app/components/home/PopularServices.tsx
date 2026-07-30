@@ -106,10 +106,10 @@ const PopularServices = () => {
       <div className="flex lg:items-center justify-between px-6 lg:justify-center space-x-4 lg:space-x-30 lg:mt-20 mt-10">
         {stats.map((item) => (
           <div key={item.id} className="flex items-center space-x-3">
-            <div className="bg-[#BDD7B699] min-w-[40px] w-[40px] h-[40px] lg:flex hidden items-center justify-center rounded-full">
+            <div className="bg-[#BDD7B699] text-[#346739] min-w-[40px] w-[40px] h-[40px] lg:flex hidden items-center justify-center rounded-full">
               {item.icon}
             </div>
-            <div className="bg-[#BDD7B699] w-[18px] h-[18px] lg:hidden flex items-center justify-center rounded-full">
+            <div className="bg-[#BDD7B699] text-[#346739] w-[18px] h-[18px] lg:hidden flex items-center justify-center rounded-full">
               {item.mobileIcon}
             </div>
 
@@ -145,7 +145,9 @@ const PopularServices = () => {
               <div className="flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                   <img src="/service_imgs/group.png" alt="avatars" />
-                  <p className="lg:text-[16px] text-[10px]">{service.artisans}+ Artisans</p>
+                  <p className="lg:text-[16px] text-[10px]">
+                    {service.artisans}+ Artisans
+                  </p>
                 </div>
                 <div className="bg-[#BDD7B699] min-w-[40px] w-[40px] h-[40px] flex items-center justify-center rounded-full">
                   <RightArrow />
@@ -154,6 +156,18 @@ const PopularServices = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="flex items-center justify-center my-20">
+        <div className="flex items-center bg-[#ffffff] p-4 rounded-2xl shadow-md space-x-4">
+          <div className="bg-[#BDD7B699] min-w-[30px] w-[30px] h-[30px] text-[#346739] lg:flex hidden items-center justify-center rounded-full">
+            <ServiceIcon width={16} height={16} />
+          </div>
+          <h2 className="text-[16px] font-semibold">View all services</h2>
+          <div className="bg-[#346739] min-w-[30px] w-[30px] h-[30px] text-[#ffffff] flex items-center justify-center rounded-full">
+            <RightArrow />
+          </div>
+        </div>
       </div>
     </div>
   );
