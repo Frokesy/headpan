@@ -42,10 +42,10 @@ const HowItWorks = () => {
           <Dashes />
         </div>
         <div className="flex flex-col space-y-10 items-center text-center">
-          <div className="bg-[#ffffff] lg:flex hidden items-center justify-center shadow-lg w-[80px] h-[80px] rounded-full">
+          <div className="bg-[#ffffff] text-[#346739] lg:flex hidden items-center justify-center shadow-lg w-[80px] h-[80px] rounded-full">
             <AvatarIcon />
           </div>
-          <div className="bg-[#ffffff] lg:hidden flex items-center justify-center shadow-lg w-[50px] h-[50px] rounded-full">
+          <div className="bg-[#ffffff] text-[#346739] lg:hidden flex items-center justify-center shadow-lg w-[50px] h-[50px] rounded-full">
             <AvatarIcon width={24} height={24} />
           </div>
           <div className="flex flex-col space-y-3">

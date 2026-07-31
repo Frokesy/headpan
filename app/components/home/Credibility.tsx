@@ -122,10 +122,10 @@ const Credibility = () => {
                 key={metric.id}
                 className="flex flex-col space-y-2 items-center justify-center"
               >
-                <div className="w-[80px] h-[80px] bg-[#CDFFE066] hidden lg:flex items-center justify-center rounded-full flex flex-col">
+                <div className="w-[80px] h-[80px] bg-[#CDFFE066] text-[#346739] hidden lg:flex items-center justify-center rounded-full flex flex-col">
                   {metric.icon}
                 </div>
-                <div className="w-[40px] h-[40px] bg-[#CDFFE066] lg:hidden flex items-center justify-center rounded-full flex flex-col">
+                <div className="w-[40px] h-[40px] bg-[#CDFFE066] text-[#346739] lg:hidden flex items-center justify-center rounded-full flex flex-col">
                   {metric.mobileIcon}
                 </div>
                 <h2 className="lg:text-[20px] text-[12px] font-semibold">
