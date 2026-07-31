@@ -39,7 +39,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="relative flex min-h-screen lg:items-center lg:justify-center">
+    <section className="relative flex lg:min-h-[130vh] min-h-screen lg:items-center lg:justify-center">
       <video
         autoPlay
         muted
@@ -52,7 +52,7 @@ const Hero = () => {
 
       <div className="absolute inset-0 bg-black/60" />
 
-      <div className="relative z-10 flex flex-col w-[90%] mx-auto text-white pt-24 lg:pt-0">
+      <div className="relative z-10 flex flex-col w-[90%] mx-auto text-white pt-10 lg:pt-0">
         <div className="flex">
           <div className="bg-[#346739] text-white text-[10px] lg:text-[12px] px-3 py-2 rounded-full">
             <span>#1 Trusted African Marketplace</span>
@@ -105,7 +105,7 @@ const Hero = () => {
           </button>
         </div>
 
-        <div className="mt-10 flex lg:flex-row flex-col gap-4 lg:gap-10">
+        <div className="my-10 flex lg:flex-row flex-col gap-4 lg:gap-10">
           <button className="bg-[#346739] lg:text-[15px] text-[14px] text-white py-4 px-10 rounded-xl font-semibold flex items-center justify-center space-x-3 w-full lg:w-fit">
             <span>Find Artisans</span>
             <RightArrow />
@@ -117,7 +117,7 @@ const Hero = () => {
           </button>
         </div>
 
-          <div className="absolute shadow-md -bottom-46 w-full bg-white p-5 lg:p-6 rounded-2xl grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
+          <div className="absolute mt-10 shadow-md lg:-bottom-40 -bottom-50 w-full bg-white p-5 lg:p-6 rounded-2xl grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10">
             {stats.map((item) => (
               <div key={item.id} className="flex items-center space-x-3">
                 <div className="bg-[#BDD7B699] min-w-[40px] w-[40px] h-[40px] text-[#346739] flex items-center justify-center rounded-full">

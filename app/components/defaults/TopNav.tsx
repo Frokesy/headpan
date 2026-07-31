@@ -3,7 +3,7 @@ import { ArrowDown, Hamburger, Logo } from "../icons";
 
 const TopNav = () => {
   return (
-    <div className="flex items-center justify-between py-6 bg-[#ffffff] lg:px-20 px-4">
+    <div className="flex items-center justify-between lg:py-6 py-3 bg-[#ffffff] lg:px-20 px-4">
       <div className="flex items-center space-x-3">
         <div className="block lg:hidden"><Hamburger /></div>
         <div className=""><Logo /></div>

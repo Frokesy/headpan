@@ -93,7 +93,7 @@ const PopularServices = () => {
   ];
 
   return (
-    <div className="mt-[20vh]">
+    <div className="lg:mt-[20vh] mt-[40vh]">
       <div className="flex flex-col items-center justify-center space-y-2">
         <h2 className="lg:text-[36px] text-[20px] font-semibold text-[#346739]">
           Popular Services

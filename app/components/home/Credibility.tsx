@@ -154,7 +154,7 @@ const Credibility = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 mt-10 gap-4 mt-10 w-[90%] mx-auto">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-6 mt-10 mb-20 gap-4 mt-10 w-[90%] mx-auto">
         {items.map((item) => (
           <div
             key={item.id}
