@@ -7,6 +7,7 @@ import Credibility from "./components/home/Credibility"
 import Testimonial from "./components/home/Testimonial"
 import FAQs from "./components/home/FAQs"
 import PreFooter from "./components/home/PreFooter"
+import Footer from "./components/defaults/Footer"
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
       <Testimonial />
       <FAQs />
       <PreFooter />
+      <Footer />
     </div>
   )
 }
