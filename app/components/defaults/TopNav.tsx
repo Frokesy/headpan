@@ -1,24 +1,59 @@
-import React from "react";
+"use client";
+
+import { useEffect, useState } from "react";
 import { ArrowDown, Hamburger, Logo } from "../icons";
 
 const TopNav = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  useEffect(() => {
+    const desktopBreakpoint = window.matchMedia("(min-width: 64rem)");
+    const collapseMobileNav = (event: MediaQueryListEvent) => {
+      if (event.matches) setIsNavOpen(false);
+    };
+
+    desktopBreakpoint.addEventListener("change", collapseMobileNav);
+    return () =>
+      desktopBreakpoint.removeEventListener("change", collapseMobileNav);
+  }, []);
+
   return (
-    <div className="flex items-center justify-between lg:py-6 py-3 bg-[#ffffff] lg:px-20 px-4">
+    <div className="flex flex-wrap items-center justify-between lg:py-6 py-3 bg-[#ffffff] lg:px-20 px-4">
       <div className="flex items-center space-x-3">
-        <div className="block lg:hidden"><Hamburger /></div>
+        <button
+          type="button"
+          className="block lg:hidden"
+          aria-label={isNavOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls="top-navigation"
+          aria-expanded={isNavOpen}
+          onClick={() => setIsNavOpen((isOpen) => !isOpen)}
+        >
+          <Hamburger />
+        </button>
         <div className=""><Logo /></div>
       </div>
-      <div className="lg:flex hidden items-center space-x-10">
-        <div className="flex items-center space-x-3">
-          <p className="text-[#2B392D] text-[15px]">Find Artisans</p>
-          <ArrowDown />
+      <div
+        id="top-navigation"
+        className={`order-3 grid w-full transition-[grid-template-rows,opacity] duration-300 ease-out lg:order-none lg:flex lg:w-auto lg:items-center lg:opacity-100 ${
+          isNavOpen
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden lg:overflow-visible">
+          <div className="flex flex-col space-y-4 pt-4 lg:flex-row lg:items-center lg:space-x-10 lg:space-y-0 lg:pt-0">
+            <div className="flex items-center space-x-3">
+              <p className="text-[#2B392D] text-[15px]">Find Artisans</p>
+              <ArrowDown />
+            </div>
+            <div className="flex items-center space-x-3">
+              <p className="text-[#2B392D] text-[15px]">Categories</p>
+              <ArrowDown />
+            </div>
+            <p className="text-[#2B392D] text-[15px]">How it works</p>
+            <p className="text-[#2B392D] text-[15px]">About Us</p>
+          </div>
         </div>
-        <div className="flex items-center space-x-3">
-          <p className="text-[#2B392D] text-[15px]">Categories</p>
-          <ArrowDown />
-        </div>
-        <p className="text-[#2B392D] text-[15px]">How it works</p>
-        <p className="text-[#2B392D] text-[15px]">About Us</p>
       </div>
 
       <div className="flex items-center space-x-6">
