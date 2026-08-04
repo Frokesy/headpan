@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { ArrowDown, Hamburger, Logo } from "../icons";
 
 const TopNav = () => {
@@ -42,10 +43,10 @@ const TopNav = () => {
       >
         <div className="overflow-hidden lg:overflow-visible">
           <div className="flex flex-col space-y-4 pt-4 lg:flex-row lg:items-center lg:space-x-10 lg:space-y-0 lg:pt-0">
-            <div className="flex items-center space-x-3">
+            <Link href="/artisans" className="flex items-center space-x-3">
               <p className="text-[#2B392D] text-[15px]">Find Artisans</p>
               <ArrowDown />
-            </div>
+            </Link>
             <div className="flex items-center space-x-3">
               <p className="text-[#2B392D] text-[15px]">Categories</p>
               <ArrowDown />
