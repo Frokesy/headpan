@@ -105,7 +105,7 @@ const FAQs = () => {
       </div>
 
       <div className="w-[90%] mx-auto mt-10 flex lg:flex-row flex-col lg:space-x-10">
-        <div className="bg-[#ffffff] shadow-md p-4 rounded-2xl flex flex-col space-y-4 lg:w-[65%]">
+        <div className="bg-[#ffffff] shadow-lg p-4 rounded-2xl flex flex-col space-y-4 lg:w-[65%]">
           {faqs.map((faq) => (
             <div key={faq.id}>
               <div
@@ -140,7 +140,7 @@ const FAQs = () => {
           ))}
         </div>
 
-        <div className="bg-[#F0FFF6] lg:w-[35%] space-y-4 p-4 rounded-2xl shadow-md lg:flex flex-col hidden">
+        <div className="bg-[#F0FFF6] lg:w-[35%] space-y-4 p-4 rounded-2xl shadow-lg lg:flex flex-col hidden">
           <div className="w-[80px] h-[80px] bg-[#346739] hidden lg:flex items-center justify-center rounded-full flex flex-col">
             <CustomerSupportIcon />
           </div>
@@ -150,10 +150,12 @@ const FAQs = () => {
           <p className="text-[#4F6552] lg:text-[16px]">
             Our support team is always ready to help you any step on the way.
           </p>
-          <button className="flex items-center bg-[#346739] space-x-3 py-2 px-6 rounded-xl">
-            <ChatIcon />
-            <p className="font-semibold text-[#ffffff]">Contact Support</p>
-          </button>
+          <div className="flex">
+            <button className="flex items-center bg-[#346739] space-x-3 py-2 px-6 rounded-xl">
+              <ChatIcon />
+              <p className="font-semibold text-[#ffffff]">Contact Support</p>
+            </button>
+          </div>
           <div className="flex items-end justify-end">
             <img src="/faq-image.png" alt="img" />
           </div>
@@ -175,11 +177,17 @@ const FAQs = () => {
               </p>
               <button className="flex items-center bg-[#346739] space-x-3 py-2 px-3 mt-6 rounded-xl">
                 <ChatIcon />
-                <p className="font-semibold text-[#ffffff] lg:text-[16px] text-[10px]">Contact Support</p>
+                <p className="font-semibold text-[#ffffff] lg:text-[16px] text-[10px]">
+                  Contact Support
+                </p>
               </button>
             </div>
             <div className="flex items-end justify-end">
-              <img src="/faq-image.png" alt="img" className="w-[150px] h-[140px] object-cover" />
+              <img
+                src="/faq-image.png"
+                alt="img"
+                className="w-[150px] h-[140px] object-cover"
+              />
             </div>
           </div>
         </div>

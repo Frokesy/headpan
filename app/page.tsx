@@ -6,6 +6,7 @@ import PopularServices from "./components/home/PopularServices"
 import Credibility from "./components/home/Credibility"
 import Testimonial from "./components/home/Testimonial"
 import FAQs from "./components/home/FAQs"
+import PreFooter from "./components/home/PreFooter"
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
       <Credibility />
       <Testimonial />
       <FAQs />
+      <PreFooter />
     </div>
   )
 }
