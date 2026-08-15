@@ -31,7 +31,7 @@ const TopNav = () => {
         >
           <Hamburger />
         </button>
-        <div className=""><Logo /></div>
+        <Link href="/" className=""><Logo /></Link>
       </div>
       <div
         id="top-navigation"
