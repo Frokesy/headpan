@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, Hamburger, Logo } from "../icons";
+import SignupModal from "../auth/SignupModal";
 
 const TopNav = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
 
   useEffect(() => {
     const desktopBreakpoint = window.matchMedia("(min-width: 64rem)");
@@ -59,10 +61,11 @@ const TopNav = () => {
 
       <div className="flex items-center space-x-6">
         <p className="text-[#2B392D] lg:text-[15px] text-[13px] font-semibold">Sign in</p>
-        <button className="bg-[#346739] lg:text-[15px] text-[13px] text-[#ffffff] py-2 px-6 rounded-lg font-semibold">
+        <button type="button" onClick={() => setIsSignupOpen(true)} className="bg-[#346739] lg:text-[15px] text-[13px] text-[#ffffff] py-2 px-6 rounded-lg font-semibold">
           Join Now
         </button>
       </div>
+      <SignupModal open={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
     </div>
   );
 };
