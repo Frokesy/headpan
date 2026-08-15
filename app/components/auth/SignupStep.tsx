@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useState } from "react";
 import { FacebookIcon, GoogleIcon, GreenCheck } from "../icons";
 
-type Props = { titleId: string; onSuccess: (email: string) => void };
+export type SignupContact = { email: string; phone: string };
+type Props = { titleId: string; onSuccess: (contact: SignupContact) => void };
 const benefits = [
   "Get discovered by more clients",
   "Showcase your work",
@@ -87,6 +88,8 @@ function InputField({
 
 export default function SignupStep({ titleId, onSuccess }: Props) {
   const [email, setEmail] = useState("");
+  const [countryCode, setCountryCode] = useState("+234");
+  const [phone, setPhone] = useState("");
   return (
     <>
       <section className="relative hidden min-h-[680px] flex-col overflow-hidden bg-[#F0FFF6] px-9 pb-0 pt-10 lg:flex">
@@ -145,7 +148,7 @@ export default function SignupStep({ titleId, onSuccess }: Props) {
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              onSuccess(email);
+              onSuccess({ email, phone: `${countryCode} ${phone}` });
             }}
             className="space-y-4"
           >
@@ -165,7 +168,8 @@ export default function SignupStep({ titleId, onSuccess }: Props) {
               <span className="sr-only">Country code</span>
               <select
                 aria-label="Country code"
-                defaultValue="+234"
+                value={countryCode}
+                onChange={(event) => setCountryCode(event.target.value)}
                 className="border-r border-[#D8E2DA] bg-[#F8FBF8] px-3 text-sm font-semibold text-[#346739] outline-none"
               >
                 <option>+234</option>
@@ -182,6 +186,8 @@ export default function SignupStep({ titleId, onSuccess }: Props) {
                 type="tel"
                 placeholder="Phone number"
                 autoComplete="tel-national"
+                value={phone}
+                onChange={(event) => setPhone(event.target.value)}
                 className="min-w-0 flex-1 bg-transparent px-3 py-3.5 text-sm text-[#293A2D] outline-none placeholder:text-[#819085]"
               />
             </label>

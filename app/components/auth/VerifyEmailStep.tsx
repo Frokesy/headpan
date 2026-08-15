@@ -7,12 +7,14 @@ type Props = {
   email: string;
   titleId: string;
   onUseDifferentEmail: () => void;
+  onVerified: () => void;
 };
 
 export default function VerifyEmailStep({
   email,
   titleId,
   onUseDifferentEmail,
+  onVerified,
 }: Props) {
   const refs = useRef<(HTMLInputElement | null)[]>([]);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -75,7 +77,7 @@ export default function VerifyEmailStep({
             Enter the six-digit code sent to{" "}
             <strong className="text-[#346739]">{email}</strong>
           </p>
-          <form onSubmit={(event) => event.preventDefault()} className="mt-7 md:mt-9">
+          <form onSubmit={(event) => { event.preventDefault(); onVerified(); }} className="mt-7 md:mt-9">
             <div onPaste={paste} className="grid grid-cols-6 gap-2 sm:gap-3">
               {otp.map((digit, index) => (
                 <input
