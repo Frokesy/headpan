@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { FacebookIcon, GoogleIcon, GreenCheck } from "../icons";
+import PasswordField from "./PasswordField";
 
 export type SignupContact = { email: string; phone: string };
 type Props = { titleId: string; onSuccess: (contact: SignupContact) => void };
@@ -67,8 +68,9 @@ function InputField({
   value?: string;
   onChange?: (value: string) => void;
 }) {
+  if (type === "password") return <PasswordField placeholder={placeholder} autoComplete={autoComplete} />;
   const icon =
-    type === "email" ? "email" : type === "password" ? "lock" : "user";
+    type === "email" ? "email" : "user";
   return (
     <label className="flex items-center gap-3 rounded-xl border border-[#D8E2DA] bg-white px-4 text-[#718075] transition focus-within:border-[#346739] focus-within:ring-2 focus-within:ring-[#346739]/10">
       <FieldIcon type={icon} />
