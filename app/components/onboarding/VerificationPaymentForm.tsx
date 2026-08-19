@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CameraIcon, WalletIcon } from "../icons";
+import PaymentDemoModal, { type PaymentMethod } from "./PaymentDemoModal";
 
 type DocumentKey = "governmentId" | "cacCertificate" | "selfie";
-type PaymentMethod = "card" | "transfer" | "ussd";
 
 const documentLabels: Record<DocumentKey, string> = {
   governmentId: "Government ID",
@@ -75,20 +75,19 @@ export default function VerificationPaymentForm() {
   const router = useRouter();
   const [documents, setDocuments] = useState<Partial<Record<DocumentKey, File>>>({});
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod | null>(null);
+  const [paymentOpen, setPaymentOpen] = useState(false);
 
   const saveDocument = (key: DocumentKey, file: File) => {
     setDocuments((current) => ({ ...current, [key]: file }));
   };
 
-  const allDocumentsUploaded = Object.keys(documentLabels).every(
-    (key) => documents[key as DocumentKey],
-  );
-
   return (
+    <>
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if (!allDocumentsUploaded || !paymentMethod) return;
+        if (!paymentMethod) return;
+        setPaymentOpen(true);
       }}
       className="mx-auto max-w-[1180px] pb-14"
     >
@@ -185,37 +184,34 @@ export default function VerificationPaymentForm() {
             </div>
           </section>
 
-          <fieldset className="mt-7 border-t border-[#E4EBE6] pt-7">
+          <fieldset role="radiogroup" className="mt-7 border-t border-[#E4EBE6] pt-7">
             <legend className="text-base font-bold text-[#293A2D]">Choose payment method</legend>
             <div className="mt-4 space-y-3">
               {paymentMethods.map((method) => {
                 const selected = paymentMethod === method.value;
                 return (
-                  <label
+                  <button
                     key={method.value}
-                    className={`flex cursor-pointer items-center gap-4 rounded-xl border p-4 transition ${selected ? "border-[#346739] bg-[#F5FFF9]" : "border-[#DDE5DF] hover:border-[#AFC1B3]"}`}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    onClick={() => setPaymentMethod(method.value)}
+                    className={`flex min-h-[74px] cursor-pointer items-center gap-4 rounded-xl border p-4 transition-colors ${selected ? "border-[#346739] bg-[#F5FFF9]" : "border-[#DDE5DF] bg-white hover:border-[#AFC1B3]"}`}
                   >
-                    <input
-                      type="radio"
-                      name="payment-method"
-                      value={method.value}
-                      checked={selected}
-                      onChange={() => setPaymentMethod(method.value)}
-                      className="sr-only"
-                    />
                     <span className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${selected ? "bg-[#346739] text-white" : "bg-[#EFF3F0] text-[#445247]"}`}>
                       <PaymentMethodIcon type={method.value} />
                     </span>
-                    <span className="min-w-0">
+                    <span className="min-w-0 text-left">
                       <span className="block text-sm font-bold text-[#293A2D]">{method.title}</span>
                       <span className="mt-1 block text-xs text-[#718075]">{method.description}</span>
                     </span>
-                    <span className={`ml-auto h-4 w-4 shrink-0 rounded-full border-4 ${selected ? "border-[#346739] bg-white" : "border-[#BCC7BE]"}`} />
-                  </label>
+                    <span className={`ml-auto flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${selected ? "border-[#346739]" : "border-[#BCC7BE]"}`}>
+                      <span className={`h-2 w-2 rounded-full bg-[#346739] transition-opacity ${selected ? "opacity-100" : "opacity-0"}`} />
+                    </span>
+                  </button>
                 );
               })}
             </div>
-            {!paymentMethod && <p className="mt-2 text-xs text-[#8B968D]">Select a payment method to continue.</p>}
           </fieldset>
         </aside>
       </div>
@@ -236,5 +232,7 @@ export default function VerificationPaymentForm() {
         </button>
       </div>
     </form>
+    <PaymentDemoModal open={paymentOpen} method={paymentMethod} onClose={() => setPaymentOpen(false)} />
+    </>
   );
 }
