@@ -1,3 +1,5 @@
+import VerificationPaymentForm from "../../../components/onboarding/VerificationPaymentForm";
+
 export default function VerificationAndPaymentPage() {
-  return <div aria-label="Verification and payment onboarding content" />;
+  return <VerificationPaymentForm />;
 }
