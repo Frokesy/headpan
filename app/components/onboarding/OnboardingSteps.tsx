@@ -40,7 +40,7 @@ export default function OnboardingSteps() {
   );
 
   return (
-    <aside className="bg-[#F5FFF9] px-4 py-5 lg:min-h-[calc(100vh-76px)] lg:w-[310px] lg:shrink-0 lg:px-7 lg:py-12">
+    <aside className="shrink-0 overflow-hidden bg-[#F5FFF9] px-4 py-5 lg:h-full lg:w-[310px] lg:px-7 lg:py-12">
       <h2 className="text-[18px] font-semibold -mt-6">Artisan Onboarding</h2>
       <p className="mb-10 text-[12px] tracking-[0.18em] text-[#79907D] block">
         Complete your profile in 5 simple steps.

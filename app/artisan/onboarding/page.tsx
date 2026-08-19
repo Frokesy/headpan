@@ -1,3 +1,5 @@
+import BusinessInformationForm from "../../components/onboarding/BusinessInformationForm";
+
 export default function BusinessInformationPage() {
-  return <div aria-label="Business information onboarding content" />;
+  return <BusinessInformationForm />;
 }
