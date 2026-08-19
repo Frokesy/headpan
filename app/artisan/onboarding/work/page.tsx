@@ -1,3 +1,5 @@
+import UploadWorkForm from "../../../components/onboarding/UploadWorkForm";
+
 export default function UploadWorkPage() {
-  return <div aria-label="Upload your work onboarding content" />;
+  return <UploadWorkForm />;
 }
