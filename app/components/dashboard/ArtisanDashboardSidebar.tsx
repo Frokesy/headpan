@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
 import {
   AnalyticsIcon,
   CommunityIcon,
@@ -68,34 +67,14 @@ const navigation = [
 ];
 
 
-function MenuIcon({ open }: { open: boolean }) {
-  return (
-    <span className="relative block h-5 w-6" aria-hidden="true">
-      <span
-        className={`absolute left-0 top-0.5 h-0.5 w-6 rounded bg-current transition ${open ? "translate-y-2 rotate-45" : ""}`}
-      />
-      <span
-        className={`absolute left-0 top-2.5 h-0.5 w-6 rounded bg-current transition ${open ? "opacity-0" : "opacity-100"}`}
-      />
-      <span
-        className={`absolute left-0 top-[18px] h-0.5 w-6 rounded bg-current transition ${open ? "-translate-y-2 -rotate-45" : ""}`}
-      />
-    </span>
-  );
-}
-
-export default function ArtisanDashboardSidebar() {
+export default function ArtisanDashboardSidebar({
+  mobileOpen,
+  onMobileClose,
+}: {
+  mobileOpen: boolean;
+  onMobileClose: () => void;
+}) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!open) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [open]);
 
   const isActive = (href: string) =>
     href === "/artisan/dashboard"
@@ -117,7 +96,7 @@ export default function ArtisanDashboardSidebar() {
         <li key={item.href}>
           <Link
             href={item.href}
-            onClick={() => setOpen(false)}
+            onClick={onMobileClose}
             aria-current={active ? "page" : undefined}
             className={`group relative flex min-h-11 items-center gap-3 overflow-hidden rounded-xl px-4 py-3 text-sm font-semibold transition-all duration-300 ease-out ${
               active
@@ -147,19 +126,21 @@ export default function ArtisanDashboardSidebar() {
       );
     });
 
-  const sidebar = (
+  const sidebar = (showLogo: boolean) => (
     <div className="flex h-full flex-col bg-[#F0FFF6]">
-      <div className="flex h-[76px] shrink-0 items-center border-b border-[#E8EDE9] px-7">
-        <Link href="/" aria-label="Headpan home">
-          <Logo />
-        </Link>
-      </div>
+      {showLogo && (
+        <div className="flex h-[76px] shrink-0 items-center border-b border-[#E8EDE9] px-7">
+          <Link href="/" aria-label="Headpan home">
+            <Logo />
+          </Link>
+        </div>
+      )}
       <nav
         aria-label="Artisan dashboard"
         className="min-h-0 flex-1 overflow-y-auto px-4 py-6"
       >
         <ul className="space-y-1.5">{renderItems(navigation)}</ul>
-        <div className="mt-6" onClick={() => setOpen(false)}>
+        <div className="mt-6" onClick={onMobileClose}>
           <DashboardUpgradeCard />
         </div>
       </nav>
@@ -169,34 +150,19 @@ export default function ArtisanDashboardSidebar() {
   return (
     <>
       <aside className="hidden h-screen w-[270px] shrink-0 border-r border-[#E8EDE9] lg:block">
-        {sidebar}
+        {sidebar(true)}
       </aside>
-
-      <header className="relative z-[70] flex h-[68px] shrink-0 items-center border-b border-[#E8EDE9] bg-white px-4 lg:hidden">
-        <button
-          type="button"
-          onClick={() => setOpen((current) => !current)}
-          aria-label={open ? "Close dashboard menu" : "Open dashboard menu"}
-          aria-expanded={open}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-[#346739]"
-        >
-          <MenuIcon open={open} />
-        </button>
-        <Link href="/" aria-label="Headpan home" className="ml-3 shrink-0">
-          <Logo />
-        </Link>
-      </header>
 
       <div
         aria-hidden="true"
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-50 bg-[#132216]/55 backdrop-blur-[2px] transition-opacity duration-300 lg:hidden ${open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
+        onClick={onMobileClose}
+        className={`fixed inset-0 z-50 bg-[#132216]/55 backdrop-blur-[2px] transition-opacity duration-300 lg:hidden ${mobileOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"}`}
       />
       <aside
         aria-label="Mobile artisan dashboard navigation"
-        className={`fixed inset-y-0 left-0 z-[60] w-[min(84vw,290px)] border-r border-[#E8EDE9] bg-[#F0FFF6] shadow-2xl transition-transform duration-300 ease-out lg:hidden ${open ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed inset-y-0 left-0 z-[60] w-[min(84vw,290px)] border-r border-[#E8EDE9] bg-[#F0FFF6] pt-[68px] shadow-2xl transition-transform duration-300 ease-out lg:hidden ${mobileOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
-        {sidebar}
+        {sidebar(false)}
       </aside>
     </>
   );
