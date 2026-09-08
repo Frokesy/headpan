@@ -63,24 +63,24 @@ export default function DashboardTopNav({
       : "Dashboard";
 
   return (
-    <header className="relative z-[70] flex h-[68px] shrink-0 items-center justify-between border-b border-[#E5EBE6] bg-white px-4 sm:px-6 lg:h-[76px] lg:px-8">
+    <header className="relative z-[70] flex h-[68px] shrink-0 items-center justify-between border-b border-[#E5EBE6] bg-white px-3 sm:px-6 lg:h-[76px] lg:px-8">
       <div className="flex min-w-0 items-center">
         <button
           type="button"
           onClick={onMenuToggle}
           aria-label={mobileOpen ? "Close dashboard menu" : "Open dashboard menu"}
           aria-expanded={mobileOpen}
-          className="flex h-10 w-10 shrink-0 items-center justify-center text-[#346739] lg:hidden [&_svg]:h-9 [&_svg]:w-9"
+          className="flex h-9 w-9 shrink-0 items-center justify-center text-[#346739] lg:hidden [&_svg]:h-8 [&_svg]:w-8"
         >
           <Hamburger />
         </button>
-        <Link href="/" aria-label="Headpan home" className="ml-2 shrink-0 lg:hidden">
+        <Link href="/" aria-label="Headpan home" className="ml-1 shrink-0 lg:hidden [&_svg]:w-[76px] sm:ml-2 sm:[&_svg]:w-[90px]">
           <Logo />
         </Link>
         <h1 className="hidden truncate text-xl font-bold text-[#293A2D] lg:block">{pageName}</h1>
       </div>
 
-      <div className="flex items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-1.5 sm:gap-3">
         <button type="button" className="mr-1 hidden items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-[#4F6552] transition hover:bg-[#F5FFF9] lg:flex">
           <HelpIcon />
           Need help?
