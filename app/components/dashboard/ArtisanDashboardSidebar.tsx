@@ -44,7 +44,7 @@ const navigation = [
   },
   {
     label: "Verification Centre",
-    href: "/artisan/dashboard/verification",
+    href: "/artisan/verification-centre",
     icon: VerificationIcon,
   },
   {

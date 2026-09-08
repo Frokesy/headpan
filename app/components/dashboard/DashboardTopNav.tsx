@@ -56,7 +56,11 @@ export default function DashboardTopNav({
 }) {
   const pathname = usePathname();
   const section = pathname.split("/")[3];
-  const pageName = section ? pageNames[section] ?? "Dashboard" : "Dashboard";
+  const pageName = pathname.startsWith("/artisan/verification-centre")
+    ? "Verification Centre"
+    : section
+      ? pageNames[section] ?? "Dashboard"
+      : "Dashboard";
 
   return (
     <header className="relative z-[70] flex h-[68px] shrink-0 items-center justify-between border-b border-[#E5EBE6] bg-white px-4 sm:px-6 lg:h-[76px] lg:px-8">
