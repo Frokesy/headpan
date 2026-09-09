@@ -34,7 +34,7 @@ export default function ArtisanDashboardShell({ children }: { children: ReactNod
           className={`min-h-0 flex-1 overscroll-contain ${
             isMessagesPage
               ? "overflow-hidden"
-              : "overflow-y-auto px-4 py-6 sm:px-7 lg:px-10 lg:py-9"
+              : "overflow-y-auto px-3 py-5 sm:px-4 lg:px-5 lg:py-7"
           }`}
         >
           {children}
