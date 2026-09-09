@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import { DashboardMessageActionIcon as Icon } from "../../../components/dashboardIcons";
 
 type Conversation = {
   id: number;
@@ -41,21 +42,6 @@ const initialMessages: ChatMessage[] = [
   { id: 7, body: "Perfect, I'll send the measurements today.", time: "10:42 AM", sent: false },
 ];
 
-function Icon({ name, className = "" }: { name: "search" | "more" | "phone" | "video" | "back" | "attach" | "smile" | "send" | "check"; className?: string }) {
-  const paths = {
-    search: <><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></>,
-    more: <><circle cx="12" cy="5" r="1" fill="currentColor"/><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="12" cy="19" r="1" fill="currentColor"/></>,
-    phone: <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/>,
-    video: <><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></>,
-    back: <><path d="m15 18-6-6 6-6"/><path d="M9 12h11"/></>,
-    attach: <path d="m21.4 11.6-8.9 8.9a6 6 0 0 1-8.5-8.5l9.5-9.5a4 4 0 0 1 5.7 5.7l-9.5 9.5a2 2 0 0 1-2.8-2.8l8.8-8.8"/>,
-    smile: <><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></>,
-    send: <><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></>,
-    check: <path d="m7 12 3 3 7-7"/>,
-  };
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">{paths[name]}</svg>;
-}
-
 function Avatar({ conversation, size = "large" }: { conversation: Conversation; size?: "small" | "large" }) {
   return (
     <span className={`relative flex shrink-0 items-center justify-center rounded-full font-bold ${conversation.color} ${size === "large" ? "h-12 w-12 text-sm" : "h-10 w-10 text-xs"}`}>
@@ -65,7 +51,7 @@ function Avatar({ conversation, size = "large" }: { conversation: Conversation; 
   );
 }
 
-export default function MessagesPage() {
+export default function MessagesScreen() {
   const [activeId, setActiveId] = useState(1);
   const [mobileChatOpen, setMobileChatOpen] = useState(false);
   const [search, setSearch] = useState("");

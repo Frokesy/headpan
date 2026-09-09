@@ -1,6 +1,8 @@
 import Link from "next/link";
 import {
   AnalyticsIcon,
+  DashboardArrowIcon,
+  DashboardEyeIcon,
   LineGraphTwo,
   MessageIcon,
   PeopleIcon,
@@ -107,41 +109,6 @@ const quickActions = [
   },
 ];
 
-function ArrowIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-4 w-4"
-      aria-hidden="true"
-    >
-      <path d="M5 12h14M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function EyeIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="h-5 w-5"
-      aria-hidden="true"
-    >
-      <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" />
-      <circle cx="12" cy="12" r="2.5" />
-    </svg>
-  );
-}
-
 const cardClass =
   "rounded-2xl border border-[#E2E9E3] bg-white shadow-[0_7px_24px_rgba(41,58,45,0.05)]";
 
@@ -180,7 +147,7 @@ export default function ArtisanDashboardPage() {
               href="/artisan/dashboard/profile"
               className="mt-5 inline-flex items-center gap-2 rounded-xl bg-[#346739] px-4 py-2.5 text-xs font-bold text-white transition hover:bg-[#29562E]"
             >
-              View profile <ArrowIcon />
+              View profile <DashboardArrowIcon />
             </Link>
           </div>
         </article>
@@ -190,7 +157,7 @@ export default function ArtisanDashboardPage() {
         >
           <div className="flex w-[42%] min-w-[125px] shrink-0 flex-col items-start">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#E8F4FF] text-[#3478B9]">
-              <EyeIcon />
+              <DashboardEyeIcon />
             </span>
             <p className="mt-4 text-sm font-bold text-[#435449]">
               Profile views

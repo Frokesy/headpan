@@ -24,7 +24,7 @@ const categories = [
 const selectClass =
   "h-12 w-full rounded-xl border border-[#D7E0D9] bg-white px-4 text-sm text-[#445247] outline-none transition focus:border-[#346739] focus:ring-2 focus:ring-[#346739]/10";
 
-export default function UploadMyWorkPage() {
+export default function WorkGalleryScreen() {
   const fileInput = useRef<HTMLInputElement>(null);
   const [pendingFiles, setPendingFiles] = useState<File[]>([]);
   const [category, setCategory] = useState("");

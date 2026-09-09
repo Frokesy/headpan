@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FormEvent, useRef, useState } from "react";
+import { DashboardCheckIcon, DashboardEditIcon as PencilIcon, DashboardTrashIcon as TrashIcon } from "../../../components/dashboardIcons";
 
 type Service = {
   id: number;
@@ -31,14 +32,6 @@ const initialServices: Service[] = [
   },
 ];
 
-function PencilIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg>;
-}
-
-function TrashIcon() {
-  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 10v6M14 10v6"/></svg>;
-}
-
 function Toggle({ enabled, onChange, label }: { enabled: boolean; onChange: () => void; label: string }) {
   return (
     <button
@@ -53,16 +46,14 @@ function Toggle({ enabled, onChange, label }: { enabled: boolean; onChange: () =
         className={`flex h-[22px] w-[22px] items-center justify-center rounded-full bg-white text-[#346739] shadow-[0_2px_5px_rgba(30,55,35,0.25)] transition-transform duration-300 ease-out ${enabled ? "translate-x-6" : "translate-x-0"}`}
       >
         {enabled && (
-          <svg viewBox="0 0 16 16" fill="none" className="h-3 w-3" aria-hidden="true">
-            <path d="m4 8 2.5 2.5L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <DashboardCheckIcon />
         )}
       </span>
     </button>
   );
 }
 
-export default function ServicesPage() {
+export default function ServicesScreen() {
   const [services, setServices] = useState(initialServices);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [skills, setSkills] = useState(["Pattern drafting", "Fabric selection", "Hand finishing"]);

@@ -42,7 +42,7 @@ const documents = [
   },
 ];
 
-export default function VerificationCentrePage() {
+export default function VerificationCentreScreen() {
   return (
     <div className="mx-auto w-full max-w-[1280px] space-y-5 sm:space-y-7">
       <h2 className="text-[15px] leading-6 text-[#4F6552] sm:text-[18px]">

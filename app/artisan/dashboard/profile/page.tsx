@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
 import { CameraIcon } from "../../../components/icons";
+import { DashboardProfileUiIcon as UiIcon } from "../../../components/dashboardIcons";
 
 type Detail = {
   id: string;
@@ -93,100 +94,6 @@ const initialFaqs: Faq[] = [
       "Yes, home measurement is available within Lagos and can be arranged when confirming your order.",
   },
 ];
-
-function UiIcon({
-  name,
-  className = "h-4 w-4",
-}: {
-  name: Detail["icon"] | "edit" | "lock" | "trash" | "clock" | "check";
-  className?: string;
-}) {
-  const paths = {
-    user: (
-      <>
-        <circle cx="12" cy="8" r="4" />
-        <path d="M4 21a8 8 0 0 1 16 0" />
-      </>
-    ),
-    mail: (
-      <>
-        <rect x="3" y="5" width="18" height="14" rx="2" />
-        <path d="m3 7 9 6 9-6" />
-      </>
-    ),
-    phone: (
-      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" />
-    ),
-    business: (
-      <>
-        <path d="M3 21V7l9-4 9 4v14" />
-        <path d="M9 21v-6h6v6M7 10h.01M12 10h.01M17 10h.01" />
-      </>
-    ),
-    work: (
-      <>
-        <rect x="3" y="7" width="18" height="13" rx="2" />
-        <path d="M8 7V4h8v3M3 12h18M10 12v2h4v-2" />
-      </>
-    ),
-    location: (
-      <>
-        <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z" />
-        <circle cx="12" cy="10" r="2.5" />
-      </>
-    ),
-    experience: (
-      <>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
-      </>
-    ),
-    store: (
-      <>
-        <path d="M3 10v11h18V10M2 10l2-6h16l2 6" />
-        <path d="M6 10a3 3 0 0 0 6 0 3 3 0 0 0 6 0M9 21v-6h6v6" />
-      </>
-    ),
-    edit: (
-      <>
-        <path d="M12 20h9" />
-        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L8 18l-4 1 1-4Z" />
-      </>
-    ),
-    lock: (
-      <>
-        <rect x="5" y="10" width="14" height="11" rx="2" />
-        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-      </>
-    ),
-    trash: (
-      <>
-        <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6M10 10v6M14 10v6" />
-      </>
-    ),
-    clock: (
-      <>
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
-      </>
-    ),
-    check: <path d="m5 12 4 4L19 6" />,
-  };
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      {paths[name]}
-    </svg>
-  );
-}
 
 function DetailGroup({
   title,
@@ -289,7 +196,7 @@ function EditableCard({
   );
 }
 
-export default function ProfilePage() {
+export default function ProfileScreen() {
   const profileInput = useRef<HTMLInputElement>(null);
   const coverInput = useRef<HTMLInputElement>(null);
   const [profileImage, setProfileImage] = useState("/artisans/designer.jpg");
