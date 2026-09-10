@@ -667,3 +667,9 @@ export const PaymentMethodIcon = ({ name }: { name: "card" | "bank" | "ussd" }) 
   const path = name === "bank" ? <><path d="m3 10 9-6 9 6M5 10h14M6 10v8M10 10v8M14 10v8M18 10v8M3 20h18" /></> : <><rect x="6" y="2" width="12" height="20" rx="2" /><path d="M9 6h6M10 18h4" /></>;
   return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5" aria-hidden="true">{path}</svg>;
 };
+
+export const DashboardFilterIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+    <path d="M4 6h16M7 12h10M10 18h4" />
+  </svg>
+);
