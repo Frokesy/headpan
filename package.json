@@ -2,8 +2,17 @@
   "name": "headpan",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "next dev",
+    "dev:web": "next dev",
+    "dev:api": "npm run dev --workspace @headpan/api",
+    "build:api": "npm run build --workspace @headpan/api",
+    "typecheck": "tsc --noEmit && npm run typecheck --workspace @headpan/api && npm run typecheck --workspace @headpan/contracts",
+    "db:migrate": "npm run db:migrate --workspace @headpan/api",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

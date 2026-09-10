@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Headpan
 
-## Getting Started
+Headpan is an npm-workspaces monorepo containing the Next.js marketplace and a Fastify/PostgreSQL API.
 
-First, run the development server:
+## Workspace layout
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```text
+app/                 Next.js web application
+apps/api/            Fastify API and SQL migrations
+packages/contracts/  Types shared by the web app and API
+compose.yaml          Local PostgreSQL service
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The web app intentionally remains at the repository root, so existing routes, imports, and deployment settings continue to work while the backend lives in its own workspace.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp apps/api/.env.example apps/api/.env
+docker compose up -d postgres
+npm run db:migrate
+```
 
-## Learn More
+Run the applications in separate terminals:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run dev:web
+npm run dev:api
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Web: http://localhost:3000
+- API health: http://localhost:4008/api/v1/health
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Use `npm run typecheck` to check the web app, API, and shared contracts. Use `npm run build` and `npm run build:api` for production builds.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The planned backend work is tracked in [BACKEND_CHECKLIST.md](./BACKEND_CHECKLIST.md).

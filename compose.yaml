@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: headpan
+      POSTGRES_USER: headpan
+      POSTGRES_PASSWORD: headpan
+    ports:
+      - "5432:5432"
+    volumes:
+      - headpan_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U headpan -d headpan"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  headpan_postgres:
